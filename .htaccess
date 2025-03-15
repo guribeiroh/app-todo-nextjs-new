@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+RewriteEngine On
+RewriteRule ^$ http://localhost:3000/ [P,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+=======
+RewriteEngine On
+RewriteRule ^$ http://localhost:3000/ [P,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+>>>>>>> b193af213fcf7e6f4725f076d7fd52e7d99b25ef
+RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L] 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoTask - Você está offline</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        h1 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .icon {
+            font-size: 64px;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+        }
+        .button {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .button:hover {
+            background-color: #2563eb;
+        }
+        .tips {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.9rem;
+        }
+        .tips h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+        .tips ul {
+            text-align: left;
+        }
+        .tips li {
+            margin-bottom: 0.75rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111827;
+                color: #e5e7eb;
+            }
+            .container {
+                background-color: #1f2937;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+            .tips {
+                border-top-color: #374151;
+            }
+            .tips h2 {
+                color: #9ca3af;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📶</div>
+        <h1>Você está offline</h1>
+        <p>Parece que você perdeu a conexão com a internet. Não se preocupe, o NeoTask continua funcionando offline e suas alterações serão sincronizadas quando você voltar a ficar online.</p>
+        <button class="button" onclick="window.location.reload()">Tentar novamente</button>
+        
+        <div class="tips">
+            <h2>Enquanto isso:</h2>
+            <ul>
+                <li>Você ainda pode visualizar e gerenciar suas tarefas já carregadas</li>
+                <li>Qualquer alteração será salva localmente</li>
+                <li>Quando sua conexão for restaurada, todas as suas alterações serão sincronizadas automaticamente</li>
+                <li>Verifique sua conexão com a internet ou tente novamente mais tarde</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Verificar periodicamente se a conexão foi restaurada
+        setInterval(() => {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }, 5000);
+        
+        // Atualizar quando o navegador detectar que estamos online novamente
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html> 

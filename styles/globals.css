@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 17, 24, 39;
+  --glow-rgb: 99, 102, 241;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 17, 24, 39;
+    --background-rgb: 249, 250, 251;
+    --glow-rgb: 79, 70, 229;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-rgb))
+    )
+    rgb(var(--background-rgb));
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to bottom, rgba(var(--glow-rgb), 0.05), transparent 200px),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  z-index: -1;
+}
+
+@layer base {
+  * {
+    @apply border-gray-700;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md transition-all font-medium focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-dark-lighter active:scale-[0.98] shadow-sm;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-indigo-600 focus:ring-indigo-500 shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-green-600 focus:ring-green-500;
+  }
+  
+  .btn-danger {
+    @apply bg-danger text-white hover:bg-rose-600 focus:ring-rose-500;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 bg-dark-lighter dark:bg-dark-accent border border-gray-700 dark:border-gray-600 text-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all;
+  }
+  
+  .card {
+    @apply bg-dark-card rounded-lg shadow-md p-4 transition-all hover:shadow-lg border border-dark-accent/70 backdrop-blur-xs;
+  }
+  
+  .task-item {
+    @apply flex items-center p-3 border-b border-gray-700/50 last:border-none hover:bg-dark-accent/30 transition-colors;
+  }
+
+  /* Estilização da scrollbar para um look mais moderno */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-lighter/80;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full hover:bg-gray-500 transition-colors;
+  }
+
+  /* Toque de glassmorphism */
+  .glass {
+    @apply backdrop-blur-md bg-dark-lighter/70 border border-white/10 shadow-xl;
+  }
+
+  /* Efeito neon para elementos destacados */
+  .neon-glow {
+    @apply shadow-glow;
+  }
+  
+  /* Novo componente sidebar item */
+  .sidebar-item {
+    @apply flex items-center w-full px-3 py-2 rounded-md text-sm transition-all;
+  }
+  
+  .sidebar-item > svg {
+    @apply mr-3 transition-all;
+  }
+  
+  /* Efeito de destaque para headers */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300;
+  }
+  
+  /* Efeito de cartão com glassmorphism */
+  .glass-card {
+    @apply bg-dark-card/80 backdrop-blur-md border border-white/10 rounded-xl shadow-lg;
+  }
+} 
